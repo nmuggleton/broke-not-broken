@@ -1,0 +1,153 @@
+Where the files in this folder come from
+================================================================================
+
+Raw data itself isn't tracked in git (see .gitignore) - most of it is
+third-party, some of it is large, and none of it is ours to redistribute. This
+file gives instructions on how to download data for reproduction, so that a copy
+of the repo without the data still says where to get it back.
+
+United States
+-------------
+
+fred/CPIAUCSL.csv
+
+    BLS CPI-U, seasonally adjusted. fred.stlouisfed.org/series/CPIAUCSL,
+    "Download" button. Used as the US deflator throughout (see
+    R/utilities/_global/load_cpi_us.R).
+
+fbc_data_2026.xlsx
+    EPI Family Budget Calculator. epi.org/resources/budget. Free for academic
+    use, no request needed. Cost of a basic standard of living by county/metro
+    and family type - the US side of Section 2.3
+    (R/utilities/4_structural/load_epi.R).
+
+co-est2025-alldata.csv
+    Census county population estimates, dataset CO-EST2025-ALLDATA.
+    census.gov/data/datasets/time-series/demo/popest/2020s-counties-total.html.
+    Used to population-weight EPI's county budgets up to state and national
+    level (R/utilities/4_structural/load_county_pop.R).
+
+pums/psam_husa.csv, psam_husb.csv, psam_husc.csv, psam_husd.csv,
+pums/csv_hus.zip, pums/ACS2020_2024_PUMS_README.pdf
+    ACS PUMS housing records. census.gov/programs-surveys/acs/microdata/access,
+    per-state housing files. Downloaded and unzipped by scripts/download_pums.sh
+    - see that script rather than pulling these by hand. Feeds the US panel of
+    Figure 2 (R/utilities/2_background/fig2/load_pums.R).
+
+Great Britain
+-------------
+
+ons/CPIH_L522.csv
+
+    ONS CPIH index, series L522 ("CPIH INDEX 00: ALL ITEMS 2015=100").
+    ons.gov.uk/economy/inflationandpriceindices/timeseries/l522/mm23, the ".csv"
+    download link. Used as the GB deflator for Figure 1
+    (R/utilities/2_background/load_cpih_gb.R).
+    This is CPIH, not the Bank of England's target measure CPI.
+
+Annual Budgets 2025.xlsx
+    Minimum Income Standard annual budgets, Loughborough CRSP / JRF, published
+    as "Annual_Budgets_2025.xlsx". Cost of a basic standard of living by
+    household type, GB - the GB side of Section 2.3
+    (R/utilities/4_structural/load_mis.R).
+
+MIS tables and figures 2025.xlsx
+    Companion workbook from the same CRSP/JRF release, sheets "Figure 5" to
+    "Figure 10": disposable income as a proportion of the MIS requirement, by
+    household type and work status - backs the full-time-minimum-wage adequacy
+    claim in the prose (R/utilities/2_background/text/load_mis_adequacy.R), not
+    the budget figures themselves.
+
+i2425e_2425prices_admin_linked.tab
+    Households Below Average Income (HBAI), tab-delimited version, UK Data
+    Service study SN 5828. Requires a UKDS account and agreeing to the End User
+    Licence - not a plain download link. Feeds the GB panel of Figure 2
+    (R/utilities/2_background/fig2/load_hbai.R). See that file's header before
+    using this data: the column header and the data rows disagree on column
+    count, and the fix is not a simple fixed offset.
+
+i2425e_res.tab
+    The other file in the same SN 5828 download bundle (person-level
+    restricted-access extract). Not read by anything in R/; kept
+    alongside i2425e_2425prices_admin_linked.tab because it came in the same
+    download.
+
+Both countries
+--------------
+
+interactive_bulletin_charts_nwcat_mean.csv
+interactive_bulletin_charts_nwcat_have.csv
+interactive_bulletin_charts_nwcat_median.csv
+    Federal Reserve Survey of Consumer Finances (SCF), interactive Bulletin
+    chart tool: federalreserve.gov/econres/scf/dataviz/scf/ table/,
+    classification group "nwcat" (net worth percentile). Only the "_mean" and
+    "_have" files are actually read (R/utilities/2_background/tab1/load_scf.R
+    needs both, together, to reconstruct a per-household mean - see that file's
+    header for why); "_median" isn't wired into anything you can drop from a
+    future re-download if it is not otherwise wanted.
+
+Not a downloaded file: WID (World Inequality Database)
+    Figure 1's headline series (net wealth, both countries, 1980-2024) comes
+    from the `wid` R package's download_wid(), not a file in this folder - see
+    R/utilities/2_background/fig1/load_wid.R for the package name (CRAN has an
+    unrelated "widr" package - don't confuse the two) and the
+    indicator/population settings it relies on.
+
+Patience and income (Section 4.1, Figure 4)
+------------------------------------------
+
+GPS_dataset_individual_level/individual_new.dta,
+GPS_dataset_individual_level/individual_v11_new.dta
+    Global Preferences Survey (Falk et al. 2018), individual-level file.
+    Downloaded from the GPS online repository. Fieldwork 2012 (a few
+    interviews in early 2013), 76 countries, 80,337 respondents. The _v11
+    file is the Stata 11-compatible copy of the same data. Read by
+    R/4_structural/text/main.R.
+
+gwp/gwp_2024_with_label.csv
+    Gallup World Poll microdata, 2024 release, CSV with value labels.
+    Institutional access; not a public download. Links to the GPS on the
+    Gallup respondent id (id_gallup). Read by
+    R/4_structural/text/main.R through the extract below.
+
+gwp/gwp2012_gps_extract.csv
+    Not a download: the GPS respondents' records from the 2012 wave of
+    gwp_2024_with_label.csv (matched on wpid = GPS id_gallup), 20
+    columns. Built 05/11/26; WP7297 (saved money in the past year) and
+    WP1233 (religion) added 10/11/26.
+    R/4_structural/text/main.R rebuilds it from the full
+    file if it is deleted. Gallup microdata, so never committed.
+
+wdi/API_SP.POP.TOTL_DS2_en_csv_v2_258623.csv
+    World Bank World Development Indicators, "Population, total"
+    (SP.POP.TOTL), all countries, 1960 onwards (database last updated
+    08/10/26). Downloaded 10/11/26 with:
+
+    curl -L -o data/raw/wdi/population.zip \
+      "https://api.worldbank.org/v2/en/indicator/SP.POP.TOTL?downloadformat=csv"
+    unzip -o data/raw/wdi/population.zip -d data/raw/wdi
+
+    The zip also holds two metadata files (Metadata_Country_...,
+    Metadata_Indicator_...), not read by anything. The 2012 values
+    weight the average within-country line in the within-country
+    patience figure (R/4_structural/text/main.R). The number
+    in the file name changes between downloads; the script finds the
+    file by pattern.
+
+Re-downloading
+---------------
+Every loader above validates its own structure at load time and errors out with
+a specific message if a re-downloaded file doesn't match what it expects (wrong
+sheet layout, missing column, changed units) rather than silently producing
+wrong numbers. See the "Confirmed against the real file" notes in each loader's
+header for checks details and dates. If the underlying data change, re-run the
+relevant main.R and read the error.
+
+external_apr/
+    Small inputs for Figure 3, tracked in the repository. apr_sources.csv:
+    typical APR by product with the source of each rate.
+    experian_tier_rates.csv: Experian State of the Automotive Finance
+    Market, Q4 reports, rate by credit tier. car_*.csv: written by
+    R/4_structural/figure_3/car_loan_rates.R from the New York Fed
+    Survey of Consumer Expectations (data/raw/sce/core2024.xlsx and
+    ca.xlsx, from newyorkfed.org/microeconomics/sce).

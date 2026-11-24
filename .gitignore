@@ -1,0 +1,19 @@
+# Raw data are large and third-party; processed output is rebuilt by
+# the scripts. See data/raw/SOURCES.txt.
+data/raw/*
+!data/raw/SOURCES.txt
+!data/raw/external_apr/
+data/processed/
+
+# Output.
+figures/
+tables/
+Rplots.pdf
+
+# R.
+.Rhistory
+.RData
+.Rproj.user/
+
+# OS.
+.DS_Store

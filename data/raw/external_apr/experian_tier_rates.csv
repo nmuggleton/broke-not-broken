@@ -1,0 +1,51 @@
+year,quarter,vehicle,tier,apr,basis,report,page
+2022,Q4,new,deep subprime,13.42,printed,2022 Q4,28
+2022,Q4,new,subprime,10.79,printed,2022 Q4,28
+2022,Q4,new,near prime,8.12,printed,2022 Q4,28
+2022,Q4,new,prime,5.82,printed,2022 Q4,28
+2022,Q4,new,super prime,4.75,printed,2022 Q4,28
+2022,Q4,used,deep subprime,20.62,printed,2022 Q4,41
+2022,Q4,used,subprime,17.46,printed,2022 Q4,41
+2022,Q4,used,near prime,12.08,printed,2022 Q4,41
+2022,Q4,used,prime,7.83,printed,2022 Q4,41
+2022,Q4,used,super prime,5.99,printed,2022 Q4,41
+2021,Q4,new,deep subprime,12.47,2022 rate minus printed yearly change,2022 Q4,28
+2021,Q4,new,subprime,9.42,2022 rate minus printed yearly change,2022 Q4,28
+2021,Q4,new,near prime,6.11,2022 rate minus printed yearly change,2022 Q4,28
+2021,Q4,new,prime,3.53,2022 rate minus printed yearly change,2022 Q4,28
+2021,Q4,new,super prime,2.49,2022 rate minus printed yearly change,2022 Q4,28
+2021,Q4,used,deep subprime,19.85,2022 rate minus printed yearly change,2022 Q4,41
+2021,Q4,used,subprime,15.94,2022 rate minus printed yearly change,2022 Q4,41
+2021,Q4,used,near prime,9.81,2022 rate minus printed yearly change,2022 Q4,41
+2021,Q4,used,prime,5.41,2022 rate minus printed yearly change,2022 Q4,41
+2021,Q4,used,super prime,3.62,2022 rate minus printed yearly change,2022 Q4,41
+2020,Q4,new,deep subprime,14.20,printed,2020 Q4,29
+2020,Q4,new,subprime,10.58,printed,2020 Q4,29
+2020,Q4,new,near prime,6.64,printed,2020 Q4,29
+2020,Q4,new,prime,3.69,printed,2020 Q4,29
+2020,Q4,new,super prime,2.65,printed,2020 Q4,29
+2020,Q4,used,deep subprime,20.30,printed,2020 Q4,41
+2020,Q4,used,subprime,16.56,printed,2020 Q4,41
+2020,Q4,used,near prime,10.13,printed,2020 Q4,41
+2020,Q4,used,prime,5.59,printed,2020 Q4,41
+2020,Q4,used,super prime,3.80,printed,2020 Q4,41
+2019,Q4,new,deep subprime,14.25,printed,2019 Q4,25
+2019,Q4,new,subprime,11.51,printed,2019 Q4,25
+2019,Q4,new,near prime,7.55,printed,2019 Q4,25
+2019,Q4,new,prime,4.75,printed,2019 Q4,25
+2019,Q4,new,super prime,3.82,printed,2019 Q4,25
+2019,Q4,used,deep subprime,19.81,printed,2019 Q4,25
+2019,Q4,used,subprime,16.88,printed,2019 Q4,25
+2019,Q4,used,near prime,10.85,printed,2019 Q4,25
+2019,Q4,used,prime,6.15,printed,2019 Q4,25
+2019,Q4,used,super prime,4.43,printed,2019 Q4,25
+2018,Q4,new,deep subprime,14.89,2019 rate minus printed yearly change,2019 Q4,25
+2018,Q4,new,subprime,12.16,2019 rate minus printed yearly change,2019 Q4,25
+2018,Q4,new,near prime,7.91,2019 rate minus printed yearly change,2019 Q4,25
+2018,Q4,new,prime,5.01,2019 rate minus printed yearly change,2019 Q4,25
+2018,Q4,new,super prime,4.19,2019 rate minus printed yearly change,2019 Q4,25
+2018,Q4,used,deep subprime,19.61,2019 rate minus printed yearly change,2019 Q4,25
+2018,Q4,used,subprime,16.79,2019 rate minus printed yearly change,2019 Q4,25
+2018,Q4,used,near prime,10.91,2019 rate minus printed yearly change,2019 Q4,25
+2018,Q4,used,prime,6.38,2019 rate minus printed yearly change,2019 Q4,25
+2018,Q4,used,super prime,4.69,2019 rate minus printed yearly change,2019 Q4,25
